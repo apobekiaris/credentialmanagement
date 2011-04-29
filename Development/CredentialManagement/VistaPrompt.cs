@@ -113,6 +113,10 @@ namespace CredentialManagement
                                                                                     out outCredSize,
                                                                                     ref persist,
                                                                                     DialogFlags);
+                // If the user has checked the Save Credentials checkbox then the persist variable
+                // will be set to true and we want to set it so that the consumer can approprietly act
+                // on the user action.
+                SaveChecked = persist;
             }
             catch (EntryPointNotFoundException e)
             {

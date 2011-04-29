@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CredentialManagement")]
 [assembly: AssemblyDescription("Windows Credential Management Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("iLya Lozovyy")]
 [assembly: AssemblyProduct("CredentialManagement")]
 [assembly: AssemblyCopyright("Copyright © iLya Lozovyy 2011")]
 [assembly: AssemblyTrademark("")]

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -69,7 +70,8 @@ namespace CredentialManagement
             bool result = NativeMethods.CredEnumerateW(Target, 0, out count, out pCredentials);
             if (!result)
             {
-                throw new Win32Exception(Marshal.GetLastWin32Error());
+                Trace.WriteLine(string.Format("Win32Exception: {0}", new Win32Exception(Marshal.GetLastWin32Error()).ToString()));
+                return;
             }
 
             // Read in all of the pointers first
