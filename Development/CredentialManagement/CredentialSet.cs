@@ -83,8 +83,8 @@ namespace CredentialManagement
 
             // Now let's go through all of the pointers in the list
             // and create our Credential object(s)
-            IEnumerable<NativeMethods.CriticalCredentialHandle> credentialHandles =
-                ptrCredList.Select(ptrCred => new NativeMethods.CriticalCredentialHandle(ptrCred));
+            List<NativeMethods.CriticalCredentialHandle> credentialHandles =
+                ptrCredList.Select(ptrCred => new NativeMethods.CriticalCredentialHandle(ptrCred)).ToList();
 
             IEnumerable<Credential> existingCredentials = credentialHandles
                 .Select(handle => handle.GetCredential())
@@ -97,7 +97,7 @@ namespace CredentialManagement
             AddRange(existingCredentials);
 
             // The individual credentials should not be free'd
-            credentialHandles.ToList().ForEach(handle => handle.SetHandleAsInvalid());
+            credentialHandles.ForEach(handle => handle.SetHandleAsInvalid());
 
             // Clean up memory to the Enumeration pointer
             NativeMethods.CredFree(pCredentials);
