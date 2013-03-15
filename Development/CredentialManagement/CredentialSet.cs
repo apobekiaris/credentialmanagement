@@ -96,8 +96,8 @@ namespace CredentialManagement
                             });
             AddRange(existingCredentials);
 
-            // Dispose of all of credential pointers and free the memory
-            credentialHandles.ToList().ForEach(handle => handle.Dispose());
+            // The individual credentials should not be free'd
+            credentialHandles.ToList().ForEach(handle => handle.SetHandleAsInvalid());
 
             // Clean up memory to the Enumeration pointer
             NativeMethods.CredFree(pCredentials);
